@@ -91,9 +91,11 @@ $app->configure('app');
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+// $app->register(App\Providers\RouteServiceProvider::class);
+// $app->register(RouteServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -111,5 +113,11 @@ $app->router->group([
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+
+// $app->router->group([
+//     'namespace' => 'Src\Agenda\MatchResult\Presentation\HTTP',
+// ], function ($router) {
+//     require __DIR__.'/../src/Agenda/MatchResult/Presentation/HTTP/routes.php';
+// });
 
 return $app;

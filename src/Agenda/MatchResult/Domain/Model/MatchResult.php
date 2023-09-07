@@ -2,14 +2,22 @@
 
 namespace Src\Agenda\MatchResult\Domain\Model;
 
-class MatchResult
+use Src\Agenda\User\Domain\Model\ValueObjects\AwayTeamName;
+use Src\Agenda\User\Domain\Model\ValueObjects\HomeTeamName;
+use Src\Agenda\User\Domain\Model\ValueObjects\LeagueName;
+use Src\Agenda\User\Domain\Model\ValueObjects\Result;
+use Src\Agenda\User\Domain\Model\ValueObjects\Scrore;
+use Src\Common\Domain\Model\Model;
+
+class MatchResult extends Model
 {
     public function __construct(
         public readonly ?int $id,
-        public string $homeTeamName,
-        public string $awayTeamName,
-        public string $result, // win, lose, draw
-        public string $score,
+        public readonly LeagueName $leageName,
+        public readonly HomeTeamName $homeTeamName,
+        public readonly AwayTeamName $awayTeamName,
+        public readonly Result $result, // win, lose, draw
+        public readonly Scrore $score,
     ) {}
 
     // public function validateNonAdminWithCompany(): MatchResult
@@ -29,6 +37,7 @@ class MatchResult
     {
         return [
             'id' => $this->id,
+            'leageName' => $this->leageName,
             'homeTeamName' => $this->homeTeamName,
             'awayTeamName' => $this->awayTeamName,
             'result' => $this->result,
